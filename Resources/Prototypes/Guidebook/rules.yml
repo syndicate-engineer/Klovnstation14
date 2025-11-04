@@ -7,9 +7,3 @@
   ruleEntry: true
   priority: 10
   text: "/ServerInfo/Guidebook/ServerRules/DefaultRules.xml"
-
-- type: guideEntry
-  id: CommandSecRules
-  name: guide-entry-command-sec-rules
-  text: "/ServerInfo/Guidebook/ServerRules/RoleplayRules/CommandAndSecRules.xml"
-  priority: 60
