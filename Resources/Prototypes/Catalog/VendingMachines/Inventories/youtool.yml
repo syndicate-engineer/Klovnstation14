@@ -16,5 +16,8 @@
     SprayPainterAmmo: 5
   # Some engineer forgot to take the multitool out the youtool when working on it, happens.
   contrabandInventory:
-    Multitool: 1
+    Multitool: 2 #klovn
+    UtilityBelt: 3 #klovn
     ClothingHandsGlovesColorYellow: 1
+  emaggedInventory:
+    ToolboxSyndicateFilled: 1 #klovn
