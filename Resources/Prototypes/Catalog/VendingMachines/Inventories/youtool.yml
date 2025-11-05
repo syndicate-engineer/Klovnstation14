@@ -17,7 +17,9 @@
   # Some engineer forgot to take the multitool out the youtool when working on it, happens.
   contrabandInventory:
     Multitool: 2 #klovn
-    UtilityBelt: 3 #klovn
+    ClothingBeltUtility: 3 #klovn
     ClothingHandsGlovesColorYellow: 1
-  emaggedInventory:
-    ToolboxSyndicateFilled: 1 #klovn
+  emaggedInventory: #klovn
+    ClothingMaskGasSyndicate: 1
+    ClothingHandsGlovesCombat: 1
+    Boombox: 2 #one for a tider :)

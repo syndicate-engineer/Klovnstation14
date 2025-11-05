@@ -6,6 +6,7 @@
     ClothingHeadHatWelding: 6
     CrowbarYellow: 8
     Multitool: 4
+    ClothingBeltUtility: 3 #klovn, i have no idea why upstream doesnt have this
     NetworkConfigurator: 5
     PowerCellMedium: 5
     ClothingHandsGlovesColorYellow: 6
@@ -14,3 +15,5 @@
   contrabandInventory:
     CowToolboxFilled: 1
     DrinkBeerCan: 3
+  emaggedInventory:
+    ToolboxSyndicateFilled: 1 #klovn

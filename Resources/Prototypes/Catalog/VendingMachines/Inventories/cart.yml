@@ -20,3 +20,5 @@
   contrabandInventory:
     BalloonNT: 2
     LuxuryPen: 1
+  emaggedInventory: #Klovn
+    AgentIDCard: 1
