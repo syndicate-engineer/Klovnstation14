@@ -127,3 +127,11 @@ Entries:
       message: G.O.R.I.L.L.A fist now stuns people for short time when its charged.
   id: 16
   time: '2025-11-15T17:04:48.0000000+00:00'
+- author: nabegator220
+  changes:
+    - type: Add
+      message: >-
+        Added the molar gas mixer to allow precise mixing no matter the
+        temperature of either inlet.
+  id: 17
+  time: '2025-11-16T08:38:53.0000000+00:00'
