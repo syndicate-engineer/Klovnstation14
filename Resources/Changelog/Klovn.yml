@@ -135,3 +135,9 @@ Entries:
         temperature of either inlet.
   id: 17
   time: '2025-11-16T08:38:53.0000000+00:00'
+- author: LaCumbiaDelCoronavirus
+  changes:
+    - type: Add
+      message: Bloodstains have been added.
+  id: 18
+  time: '2025-11-16T08:40:57.0000000+00:00'
