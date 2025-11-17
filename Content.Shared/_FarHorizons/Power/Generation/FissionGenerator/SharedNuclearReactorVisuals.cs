@@ -32,7 +32,7 @@ public enum ReactorCaps
 
     Fuel,
     FuelM1,
-    FuelM2, 
+    FuelM2,
     FuelM3,
     FuelM4,
 

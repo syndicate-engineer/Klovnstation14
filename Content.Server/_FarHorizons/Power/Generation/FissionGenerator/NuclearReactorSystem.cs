@@ -47,8 +47,8 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<NuclearReactorComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<NuclearReactorComponent, AtmosDeviceUpdateEvent>(OnUpdate);
-        SubscribeLocalEvent<NuclearReactorComponent, AtmosDeviceEnabledEvent>(OnEnabled);
         SubscribeLocalEvent<NuclearReactorComponent, AtmosDeviceDisabledEvent>(OnDisabled);
 
         SubscribeLocalEvent<NuclearReactorComponent, EntInsertedIntoContainerMessage>(OnPartChanged);
@@ -59,26 +59,24 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
 
     private void OnPartChanged(EntityUid uid, NuclearReactorComponent component, ContainerModifiedMessage args) => ReactorTryGetSlot(uid, "part_slot", out component.PartSlot!);
 
-    private void OnEnabled(EntityUid uid, NuclearReactorComponent comp, ref AtmosDeviceEnabledEvent args)
+    private void OnMapInit(Entity<NuclearReactorComponent> entity, ref MapInitEvent _)
     {
-        comp.ComponentGrid = new ReactorPartComponent[_gridWidth, _gridHeight];
-        var prefab = SelectPrefab(comp.Prefab);
+        entity.Comp.ComponentGrid = new ReactorPartComponent[_gridWidth, _gridHeight];
+        var prefab = SelectPrefab(entity.Comp.Prefab);
         for (var x = 0; x < _gridWidth; x++)
         {
             for (var y = 0; y < _gridHeight; y++)
             {
-                comp.FluxGrid[x, y] = [];
-                comp.ComponentGrid[x, y] = prefab[x, y] != null ? new ReactorPartComponent(prefab[x, y]!) : null;
+                entity.Comp.FluxGrid[x, y] = [];
+                entity.Comp.ComponentGrid[x, y] = prefab[x, y] != null ? new ReactorPartComponent(prefab[x, y]!) : null;
             }
         }
 
-        comp.ApplyPrefab = false;
-        UpdateGridVisual(uid, comp);
+        UpdateGridVisual(entity, entity.Comp);
     }
 
     private void OnDisabled(EntityUid uid, NuclearReactorComponent comp, ref AtmosDeviceDisabledEvent args)
     {
-        comp.ApplyPrefab = default!;
         comp.Temperature = Atmospherics.T20C;
 
         foreach (var RC in comp.ComponentGrid)
@@ -104,24 +102,7 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
             return;
 
         if (comp.VisualGrid[0, 0].Id == 0)
-        { InitGrid(ent); comp.ApplyPrefab = true; }
-
-        if (comp.ApplyPrefab)
-        {
-            var prefab = SelectPrefab(comp.Prefab);
-            for (var x = 0; x < _gridWidth; x++)
-            {
-                for (var y = 0; y < _gridHeight; y++)
-                {
-                    comp.ComponentGrid[x, y] = prefab[x, y] != null ? new ReactorPartComponent(prefab[x, y]!) : null;
-                }
-            }
-
-            comp.ApplyPrefab = false;
-
-            comp.ApplyPrefab = false;
-            UpdateGridVisual(uid, comp);
-        }
+            InitGrid(ent);
 
         if (!_nodeContainer.TryGetNodes(uid, comp.InletName, comp.OutletName, out OffsetPipeNode? inlet, out OffsetPipeNode? outlet))
             return;
@@ -426,7 +407,7 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         ent.Comp.RadiationLevel /= 2;
     }
 
-    private static ReactorPartComponent?[,] SelectPrefab(string select) => select switch
+    private static ReactorPartComponent?[,] SelectPrefab(string? select) => select switch
     {
         "normal" => NuclearReactorPrefabs.Normal,
         "debug" => NuclearReactorPrefabs.Debug,

@@ -12,22 +12,28 @@
       map: [ "enum.ReactorVisualLayers.Sprite" ]
     - state: reactor_status_active
       visible: false
+      shader: unshaded
       map: [ "enum.ReactorVisualLayers.Status" ]
     - state: reactor_gas_input_lights
       visible: false
+      shader: unshaded
       map: [ "enum.ReactorVisualLayers.Input" ]
     - state: reactor_gas_output_lights
       visible: false
+      shader: unshaded
       map: [ "enum.ReactorVisualLayers.Output" ]
     - state: reactor_lights_warning
       visible: false
+      shader: unshaded
       map: [ "enum.ReactorVisualLayers.Lights" ]
     # - state: reactor_fire
     #   visible: false
-    #   map: [ "enum.ReactorVisualLayers.Sprite" ]
+    #   shader: unshaded
+    #   map: [ "enum.ReactorVisualLayers.Smoke" ]
     # - state: reactor_smoke
     #   visible: false
-    #   map: [ "enum.ReactorVisualLayers.Sprite" ]
+    #   shader: unshaded
+    #   map: [ "enum.ReactorVisualLayers.Fire" ]
   - type: GenericVisualizer
     visuals:
       enum.ReactorVisuals.Sprite:
@@ -58,7 +64,7 @@
       #   enum.ReactorVisualLayers.Smoke:
       #     True: {visible: true}
       #     False: {visible: false}
-      # enum.ReactorVisuals.Effects:
+      # enum.ReactorVisuals.Fire:
       #   enum.ReactorVisualLayers.Fire:
       #     True: {visible: true}
       #     False: {visible: false}
@@ -80,7 +86,7 @@
         layer:
         - MachineLayer
   - type: Anchorable
-    flags: 
+    flags:
     - Anchorable
   - type: NodeContainer
     examinable: true
@@ -112,6 +118,7 @@
           components:
             - ReactorPart
   - type: NuclearReactor
+    prefab: normal
   - type: ActivatableUI
     key: enum.NuclearReactorUiKey.Key
   - type: ActivatableUIRequiresAnchor
@@ -123,6 +130,33 @@
     access: [["Engineering"]]
   - type: Lock
     unlockOnClick: false
+
+# KS14 - Debug variant
+- type: entity
+  parent: BaseNuclearReactor
+  id: NuclearReactorDebug
+  suffix: Debug
+  components:
+  - type: NuclearReactor
+    prefab: debug
+
+# KS14 - Debug variant
+- type: entity
+  parent: BaseNuclearReactor
+  id: NuclearReactorMeltdown
+  suffix: Debug, Meltdown
+  components:
+  - type: NuclearReactor
+    prefab: meltdown
+
+# KS14 - Debug variant
+- type: entity
+  parent: BaseNuclearReactor
+  id: NuclearReactorMeltdown
+  suffix: Debug, Alignment
+  components:
+  - type: NuclearReactor
+    prefab: alignment
 
 #Visual parts on the reactor
 - type: entity

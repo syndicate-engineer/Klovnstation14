@@ -16,7 +16,7 @@ public sealed partial class NuclearReactorComponent : Component
     public readonly int ReactorOverheatTemp = 1200;
     public readonly int ReactorFireTemp = 1500;
     public readonly int ReactorMeltdownTemp = 2000;
-    
+
     [DataField]
     public float RadiationLevel = 0;
     [DataField]
@@ -60,10 +60,11 @@ public sealed partial class NuclearReactorComponent : Component
 
     public GasMixture? AirContents;
 
+    /// <summary>
+    ///     Prefab to apply upon mapinit. Null to apply no prefab.
+    /// </summary>
     [DataField]
-    public string Prefab = "normal";
-    [DataField]
-    public bool ApplyPrefab = true;
+    public string? Prefab = "normal";
 
     [DataField("inlet")]
     public string InletName { get; set; } = "inlet";
