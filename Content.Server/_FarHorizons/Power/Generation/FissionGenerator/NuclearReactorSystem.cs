@@ -81,8 +81,8 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         comp.ApplyPrefab = default!;
         comp.Temperature = Atmospherics.T20C;
 
-        foreach(var RC in comp.ComponentGrid)
-            if(RC != null)
+        foreach (var RC in comp.ComponentGrid)
+            if (RC != null)
                 RC.Temperature = Atmospherics.T20C;
 
         Array.Clear(comp.ComponentGrid);
@@ -133,8 +133,8 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         if (outlet.ReachableNodes.Count == 0)
             _nodeGroupSystem.QueueReflood(outlet);
 
-        _appearance.SetData(uid, ReactorVisuals.Input, inlet.Air.Moles.Sum() > 20);
-        _appearance.SetData(uid, ReactorVisuals.Output, outlet.Air.Moles.Sum() > 20);
+        _appearance.SetData(uid, ReactorVisuals.Input, inlet.Air.TotalMoles > 20);
+        _appearance.SetData(uid, ReactorVisuals.Output, outlet.Air.TotalMoles > 20);
 
         var AirContents = new GasMixture();
 
@@ -212,7 +212,7 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         {
             for (var y = 0; y < _gridHeight; y++)
             {
-                foreach (var neutron in flux[x,y])
+                foreach (var neutron in flux[x, y])
                 {
                     NeutronCount++;
 
@@ -257,9 +257,9 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         comp.TotalSpent = TotalSpent;
 
         // Averaging my averages
-        for(var i = 1; i < comp.ThermalPowerL1.Length; i++)
+        for (var i = 1; i < comp.ThermalPowerL1.Length; i++)
         {
-            comp.ThermalPowerL1[i-1]=comp.ThermalPowerL1[i];
+            comp.ThermalPowerL1[i - 1] = comp.ThermalPowerL1[i];
         }
         comp.ThermalPowerL1[^1] = TempChange;
         for (var i = 1; i < comp.ThermalPowerL2.Length; i++)
@@ -299,7 +299,7 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         {
             for (var y = 0; y < _gridHeight; y++)
             {
-                if(comp.ComponentGrid[x, y] != null)
+                if (comp.ComponentGrid[x, y] != null)
                 {
                     var RC = comp.ComponentGrid[x, y];
                     if (RC == null)
@@ -391,8 +391,8 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
             if (Math.Abs(COEVerify - COECheck) > 64)
                 //throw new Exception("COE violation, difference of " + Math.Abs(COEVerify - COECheck));
 
-            if (reactor.AirContents.Temperature < 0 || reactor.Temperature < 0)
-                throw new Exception("Reactor casing temperature calculation resulted in sub-zero value.");
+                if (reactor.AirContents.Temperature < 0 || reactor.Temperature < 0)
+                    throw new Exception("Reactor casing temperature calculation resulted in sub-zero value.");
 
             ProcessedGas = reactor.AirContents;
         }
@@ -545,7 +545,7 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         UpdateGridVisual(ent.Owner, comp);
     }
 
-    private void OnControlRodMessage(Entity<NuclearReactorComponent> ent, ref ReactorControlRodModifyMessage args) 
+    private void OnControlRodMessage(Entity<NuclearReactorComponent> ent, ref ReactorControlRodModifyMessage args)
         => ent.Comp.ControlRodInsertion = Math.Clamp(ent.Comp.ControlRodInsertion + args.Change, 0, 2);
 
     private void UpdateVisuals(Entity<NuclearReactorComponent> ent)
@@ -553,7 +553,7 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         var comp = ent.Comp;
         var uid = ent.Owner;
 
-        if(comp.Melted)
+        if (comp.Melted)
         {
             _appearance.SetData(uid, ReactorVisuals.Lights, ReactorWarningLights.LightsOff);
             _appearance.SetData(uid, ReactorVisuals.Status, ReactorStatusLights.Off);
