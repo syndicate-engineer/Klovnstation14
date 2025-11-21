@@ -69,9 +69,6 @@
     sprite: _KS14/Objects/Weapons/Guns/Pistols/mk1_unfinished.rsi
     layers:
     - state: icon_unfinished1
-  - type: Item
-    sprite: _KS14/Objects/Weapons/Guns/Pistols/mk1_unfinished.rsi
-    state: iconunfinishedone
   - type: Construction
     graph: mk1Graph
     node: mk1unfinishednohandle
@@ -85,7 +82,6 @@
   - type: Sprite
     layers:
     - state: icon_unfinished2
-  - type: Item
   - type: Construction
     graph: mk1Graph
     node: mk1unfinishedhandle
