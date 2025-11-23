@@ -203,3 +203,9 @@ Entries:
       message: The station AI can now move bots around.
   id: 26
   time: '2025-11-21T20:45:55.0000000+00:00'
+- author: rottenheadphones
+  changes:
+    - type: Tweak
+      message: Saltern revamp, added nuclear reactor
+  id: 27
+  time: '2025-11-23T07:23:26.0000000+00:00'
