@@ -209,3 +209,11 @@ Entries:
       message: Saltern revamp, added nuclear reactor
   id: 27
   time: '2025-11-23T07:23:26.0000000+00:00'
+- author: LaCumbiaDelCoronavirus
+  changes:
+    - type: Add
+      message: >-
+        Due to shortage of nuke inspectors, centcom will now perform routine
+        calibrations of the station nuke timer.
+  id: 28
+  time: '2025-12-01T11:37:50.0000000+00:00'
