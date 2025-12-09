@@ -235,3 +235,9 @@ Entries:
       message: The nuke exploding ends the shift after 10-second countdown.
   id: 30
   time: '2025-12-08T16:56:39.0000000+00:00'
+- author: Gerkada
+  changes:
+    - type: Fix
+      message: Fixed non-critical issues with DADG nuke codes port.
+  id: 31
+  time: '2025-12-09T16:10:03.0000000+00:00'
