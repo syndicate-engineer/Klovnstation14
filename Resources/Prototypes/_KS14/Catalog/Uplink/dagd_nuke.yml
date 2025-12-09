@@ -1,4 +1,5 @@
 # SPDX-FileCopyrightText: 2025 Gerkada
+# SPDX-FileCopyrightText: 2025 LaCumbiaDelCoronavirus
 # SPDX-FileCopyrightText: 2025 github_actions[bot]
 #
 # SPDX-License-Identifier: MIT
@@ -24,9 +25,11 @@
   priority: 11
 
 - type: storePreset
-  id: Traitor
+  id: TraitorStore
+  storeName: store-preset-traitor-name
   categories:
   - UplinkObjective
   currencyWhitelist:
   - Telecrystal
-  balance:
+  initialBalance:
+    Telecrystal: 0
