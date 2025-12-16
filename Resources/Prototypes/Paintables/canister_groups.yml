@@ -14,3 +14,5 @@
     storage: StorageCanister
     tritium: TritiumCanister
     water-vapor: WaterVaporCanister
+    zipion: ZipionCanister
+    argon: ArgonCanister
