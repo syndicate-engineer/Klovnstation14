@@ -247,3 +247,13 @@ Entries:
       message: 'Ported the guide to advanced mimery. Long live Livrah! '
   id: 32
   time: '2025-12-09T16:11:02.0000000+00:00'
+- author: syndicate-engineer
+  changes:
+    - type: Add
+      message: >-
+        Added new gas Argon, two reactions of Argon formation and Argon
+        Absorption
+    - type: Fix
+      message: added Zipion to paintable canister group
+  id: 33
+  time: '2025-12-17T18:01:35.0000000+00:00'
