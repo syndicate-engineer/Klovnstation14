@@ -317,9 +317,9 @@
   productEntity: ClothingBackpackDuffelSyndicateFilledHushpup
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 8
+    Telecrystal: 24
   cost:
-    Telecrystal: 10
+    Telecrystal: 30
   categories:
   - UplinkWeaponry
 
@@ -801,15 +801,9 @@
   productEntity: ChemicalSynthesisKit
   discountCategory: usualDiscounts
   discountDownTo:
-<<<<<<< HEAD
     Telecrystal: 9
   cost:
     Telecrystal: 12
-=======
-    Telecrystal: 2
-  cost:
-    Telecrystal: 3
->>>>>>> upstream/master
   categories:
   - UplinkChemicals
 
@@ -856,15 +850,9 @@
   productEntity: ChemistryBottleNocturine
   discountCategory: usualDiscounts
   discountDownTo:
-<<<<<<< HEAD
     Telecrystal: 9
   cost:
     Telecrystal: 18
-=======
-    Telecrystal: 2
-  cost:
-    Telecrystal: 4
->>>>>>> upstream/master
   categories:
   - UplinkChemicals
 
@@ -1760,7 +1748,6 @@
   - UplinkWearables
 
 - type: listing
-<<<<<<< HEAD
   id: UplinkVoiceMask
   name: uplink-voice-mask-name
   description: uplink-voice-mask-desc
@@ -1774,8 +1761,6 @@
   - UplinkWearables
 
 - type: listing
-=======
->>>>>>> upstream/master
   id: UplinkHolster
   name: uplink-holster-name
   description: uplink-holster-desc
@@ -2182,24 +2167,6 @@
     - Botanist
 
 - type: listing
-  id: uplinkRiggedBoxingGlovesPassenger
-  name: uplink-rigged-boxing-gloves-name
-  description: uplink-rigged-boxing-gloves-desc
-  productEntity: ClothingHandsGlovesBoxingRigged
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 9
-  cost:
-    Telecrystal: 18
-  categories:
-    - UplinkJob
-  conditions:
-    - !type:BuyerJobCondition
-      whitelist:
-        - Passenger
-
-- type: listing
-<<<<<<< HEAD
   id: uplinkRiggedBoxingGlovesBoxer
   name: uplink-rigged-boxing-gloves-name
   description: uplink-rigged-boxing-gloves-desc
@@ -2217,8 +2184,6 @@
         - Boxer
 
 - type: listing
-=======
->>>>>>> upstream/master
   id: uplinkNecronomicon
   name: uplink-necronomicon-name
   description: uplink-necronomicon-desc
@@ -2494,8 +2459,6 @@
     whitelist:
     - MedicalDoctor
 
-<<<<<<< HEAD
-
 - type: listing
   id: UplinkSyndieMedsBundle
   name: uplink-meds-bundle-name
@@ -2514,7 +2477,7 @@
     - MedicalDoctor
     - Chemist
     - Paramedic
-=======
+
 - type: listing
   id: uplinkBriefcaseGun
   name: uplink-briefcase-gun-name
@@ -2522,13 +2485,12 @@
   productEntity: WeaponSubMachineGunBriefcase
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 10
+    Telecrystal: 30
   cost:
-    Telecrystal: 15
+    Telecrystal: 45
   categories:
   - UplinkJob
   conditions:
   - !type:BuyerJobCondition
     whitelist:
     - Lawyer
->>>>>>> upstream/master
