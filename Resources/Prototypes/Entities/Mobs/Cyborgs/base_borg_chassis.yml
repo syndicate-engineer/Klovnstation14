@@ -161,11 +161,10 @@
     - Science
   - type: ZombieImmune
   - type: Repairable
-    allowSelfRepair: true # KS14 - Allow selfrepair
     damageValue: -10 # 10 seconds to repair from crit
     doAfterDelay: 1
     fuelCost: 0.5
-    allowSelfRepair: false
+    allowSelfRepair: true # KS14 - Allow selfrepair
   - type: BorgChassis
   - type: LockingWhitelist
     blacklist:
