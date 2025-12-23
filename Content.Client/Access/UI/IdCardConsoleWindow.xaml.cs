@@ -13,10 +13,12 @@
 // SPDX-FileCopyrightText: 2024 beck-thompson
 // SPDX-FileCopyrightText: 2024 c4llv07e
 // SPDX-FileCopyrightText: 2025 Alfred Baumann
+// SPDX-FileCopyrightText: 2025 LaCumbiaDelCoronavirus
 // SPDX-FileCopyrightText: 2025 PJB3005
 // SPDX-FileCopyrightText: 2025 Pieter-Jan Briers
 // SPDX-FileCopyrightText: 2025 Vasilis The Pikachu
 // SPDX-FileCopyrightText: 2025 github_actions[bot]
+// SPDX-FileCopyrightText: 2025 nabegator220
 // SPDX-FileCopyrightText: 2025 qwerltaz
 // SPDX-FileCopyrightText: 2025 āda
 //

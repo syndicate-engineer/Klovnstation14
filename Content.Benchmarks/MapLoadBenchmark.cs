@@ -9,9 +9,11 @@
 // SPDX-FileCopyrightText: 2024 Leon Friedrich
 // SPDX-FileCopyrightText: 2025 Errant
 // SPDX-FileCopyrightText: 2025 K-Dynamic
+// SPDX-FileCopyrightText: 2025 LaCumbiaDelCoronavirus
 // SPDX-FileCopyrightText: 2025 Partmedia
 // SPDX-FileCopyrightText: 2025 Spessmann
 // SPDX-FileCopyrightText: 2025 github_actions[bot]
+// SPDX-FileCopyrightText: 2025 nabegator220
 //
 // SPDX-License-Identifier: MIT
 

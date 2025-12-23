@@ -11,8 +11,10 @@
 // SPDX-FileCopyrightText: 2024 Winkarst
 // SPDX-FileCopyrightText: 2024 chavonadelal
 // SPDX-FileCopyrightText: 2025 Brandon Li
+// SPDX-FileCopyrightText: 2025 LaCumbiaDelCoronavirus
 // SPDX-FileCopyrightText: 2025 Red
 // SPDX-FileCopyrightText: 2025 github_actions[bot]
+// SPDX-FileCopyrightText: 2025 nabegator220
 //
 // SPDX-License-Identifier: MIT
 
