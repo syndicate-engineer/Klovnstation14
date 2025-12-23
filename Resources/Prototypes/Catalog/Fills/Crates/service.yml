@@ -245,23 +245,6 @@
   name: guidebooks crate
   description: Contains guidebooks.
   components:
-<<<<<<< HEAD
-    - type: StorageFill
-      contents:
-      - id: BookSpaceEncyclopedia
-      - id: BookTheBookOfControl
-      - id: BookBartendersManual
-      - id: BookHowToCookForFortySpaceman
-      - id: BookLeafLoversSecret
-      - id: BookEngineersHandbook
-      - id: BookScientistsGuidebook
-      - id: BookSecurity
-      - id: BookHowToKeepStationClean
-      - id: BookHowToRockAndStone
-      - id: BookMedicalReferenceBook
-      - id: BookHowToSurvive
-      - id: BookChemicalCompendium
-=======
   - type: EntityTableContainerFill
     containers:
       entity_storage: !type:AllSelector
@@ -280,7 +263,6 @@
         - id: BookHowToSurvive
         - id: BookChemicalCompendium
         - id: BookSpaceLaw
->>>>>>> upstream/master
 
 - type: entity
   parent: CrateFreezer

@@ -31,11 +31,7 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: Engineering
-<<<<<<< HEAD
-    time: 10800 #3 hrs, klovn
-=======
-    time: 2.5h
->>>>>>> upstream/master
+    time: 3h #3 hrs, klovn
   startingGear: AtmosphericTechnicianGear
   icon: "JobIconAtmosphericTechnician"
   supervisors: job-supervisors-ce

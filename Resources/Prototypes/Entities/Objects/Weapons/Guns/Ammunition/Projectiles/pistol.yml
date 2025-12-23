@@ -49,13 +49,8 @@
   - type: Projectile
     damage:
       types:
-<<<<<<< HEAD
-        Blunt: 5
-        Heat: 20
-=======
         Piercing: 12
         Heat: 4
->>>>>>> upstream/master
 
 - type: entity
   parent: BaseBulletUranium

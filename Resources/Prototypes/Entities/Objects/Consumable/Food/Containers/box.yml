@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SPDX-FileCopyrightText: 2021 DmitriyRubetskoy
 # SPDX-FileCopyrightText: 2021 Galactic Chimp
 # SPDX-FileCopyrightText: 2021 Leon Friedrich
@@ -44,9 +43,6 @@
 # SPDX-License-Identifier: MIT
 
 # Donut
-=======
-﻿# Donut
->>>>>>> upstream/master
 
 # There is a newer, better version of the donutbox from tgstation included in the
 # donut.rsi. The reason it isn't implemented is it requires a StackVisuals offsetting
@@ -553,14 +549,11 @@
   - type: Sprite
     sprite: Objects/Storage/Happyhonk/clown.rsi
     state: box
-<<<<<<< HEAD
     layers:
     - state: box
       map: ["closeLayer"]
     - state: box-open
       map: ["openLayer"]
-=======
->>>>>>> upstream/master
   - type: Item
     sprite: Objects/Storage/Happyhonk/clown.rsi
     heldPrefix: box

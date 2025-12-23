@@ -49,13 +49,10 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
-<<<<<<< HEAD
 using Content.Shared.Decals; // KS14 Addition
 using Content.Shared.EntityEffects.Effects;
-=======
 using Content.Shared.Damage.Systems;
 using Content.Shared.EntityEffects.Effects.Solution;
->>>>>>> upstream/master
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Forensics.Components;
@@ -293,7 +290,7 @@ public abstract class SharedBloodstreamSystem : EntitySystem
 
     // KS14 Addition
     // - [x] Tested, works.
-    // TODO: Clean up code 
+    // TODO: Clean up code
     // Coder's Ultimatum
     private void HandleBleedEffects(in Entity<BloodstreamComponent> entity, in DamageChangedEvent args, DamageSpecifier bloodlossSpecifier)
     {

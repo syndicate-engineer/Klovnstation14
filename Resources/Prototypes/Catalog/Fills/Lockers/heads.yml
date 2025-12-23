@@ -378,12 +378,7 @@
   id: LockerFillHeadOfSecurityNoHardsuit
   table: !type:AllSelector
     children:
-<<<<<<< HEAD
     - id: WeaponEnergyShotgun
-=======
-    - id: WeaponEnergyMagnum
-    - id: BookSpaceLaw
->>>>>>> upstream/master
     - id: BoxEncryptionKeySecurity
     - id: CigarGoldCase
       prob: 0.50

@@ -40,7 +40,6 @@ namespace Content.Shared._KS14.Research.Components
     [Serializable, NetSerializable]
     public sealed class ResearchConsoleBoundInterfaceState(int points, TimeSpan nextRediscover, int rediscoverCost) : BoundUserInterfaceState
     {
-<<<<<<< HEAD
         public int Points;
 
         /// <summary>
@@ -53,12 +52,5 @@ namespace Content.Shared._KS14.Research.Components
             Points = points;
             Researches = researches; // Goobstation R&D console rework
         }
-=======
-        public int Points = points;
-
-        public TimeSpan NextRediscover = nextRediscover;
-
-        public int RediscoverCost = rediscoverCost;
->>>>>>> upstream/master
     }
 }

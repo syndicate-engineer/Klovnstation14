@@ -45,15 +45,12 @@
       Ammonia: stationAmmonia
       NitrousOxide: stationNO
       Frezon: danger
-<<<<<<< HEAD
       Zipion: stationZipion
       Argon: GasArgon
   - type: Tag
     tags:
       - AirSensor
       - ForceFixRotations
-=======
->>>>>>> upstream/master
   - type: GuideHelp
     guides:
     - DeviceMonitoringAndControl

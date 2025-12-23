@@ -162,7 +162,6 @@ public sealed partial class ResearchSystem
         if (!Resolve(uid, ref component, ref clientComponent, false))
             return;
 
-<<<<<<< HEAD
         // Goobstation: R&D Console Rework Start
         var allTechs = PrototypeManager.EnumeratePrototypes<TechnologyPrototype>();
         Dictionary<string, ResearchAvailability> techList;
@@ -193,17 +192,6 @@ public sealed partial class ResearchSystem
         else
         {
             techList = allTechs.ToDictionary(proto => proto.ID, _ => ResearchAvailability.Unavailable);
-=======
-        
-        var points = 0;
-        var nextRediscover = TimeSpan.MaxValue;
-        var rediscoverCost = 0;
-        if (TryGetClientServer(uid, out _, out var serverComponent, clientComponent) && clientComponent.ConnectedToServer)
-        {
-            points = serverComponent.Points;
-            nextRediscover = serverComponent.NextRediscover;
-            rediscoverCost = serverComponent.RediscoverCost;
->>>>>>> upstream/master
         }
         var state = new ResearchConsoleBoundInterfaceState(points, nextRediscover, rediscoverCost);
 
@@ -247,7 +235,6 @@ public sealed partial class ResearchSystem
         args.Handled = true;
     }
 
-<<<<<<< HEAD
     private bool UnlockTechnology(EntityUid uid, string techId, EntityUid actor)
     {
         if (!TryComp<ResearchClientComponent>(uid, out var clientComp) || clientComp.Server is not { } serverUid)
@@ -271,10 +258,5 @@ public sealed partial class ResearchSystem
         Dirty(serverUid, serverComp);
 
         return true;
-=======
-    private bool HasAccess(EntityUid uid, EntityUid act)
-    {
-        return TryComp<AccessReaderComponent>(uid, out var access) && _accessReader.IsAllowed(act, uid, access);
->>>>>>> upstream/master
     }
 }

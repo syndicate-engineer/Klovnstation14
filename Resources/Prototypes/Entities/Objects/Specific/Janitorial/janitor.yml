@@ -136,29 +136,6 @@
         visible: false
     - type: SolutionContainerVisuals
       maxFillLevels: 2
-<<<<<<< HEAD
-      fillBaseName: fill-
-      inHandsFillBaseName: -fill-
-      inHandsMaxFillLevels: 2
-    - type: MeleeWeapon
-      damage:
-        types:
-          Blunt: 12
-      soundHit:
-         collection: MetalThud
-    - type: Spillable
-      solution: absorbed
-      spillWhenThrown: false
-      preventMelee: false
-    - type: DrainableSolution
-      solution: absorbed
-    - type: Wieldable
-    - type: IncreaseDamageOnWield
-      damage:
-        types:
-          Blunt: 8
-=======
->>>>>>> upstream/master
     - type: Item
       sprite: Objects/Specific/Janitorial/advmop.rsi
     - type: Absorbent

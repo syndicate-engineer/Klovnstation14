@@ -285,11 +285,8 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
-<<<<<<< HEAD
     - KlovnEmagStatic #klovn
-=======
     - SyndicateAmmoStatic
->>>>>>> upstream/master
   - type: BlueprintReceiver
     whitelist:
       tags:

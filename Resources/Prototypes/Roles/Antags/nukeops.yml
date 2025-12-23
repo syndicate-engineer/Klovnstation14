@@ -22,14 +22,9 @@
   setPreference: true
   objective: roles-antag-nuclear-operative-objective
   requirements:
-<<<<<<< HEAD
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 3600 #1 hrs, klovn
-=======
-  - !type:OverallPlaytimeRequirement
-    time: 5h
->>>>>>> upstream/master
+    time: 1h #1 hrs, klovn
   guides: [ NuclearOperatives ]
 
 - type: antag
@@ -39,20 +34,12 @@
   setPreference: true
   objective: roles-antag-nuclear-operative-agent-objective
   requirements:
-<<<<<<< HEAD
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 7200 #2 hrs, klovn
+    time: 2h #2 hrs, klovn
   - !type:RoleTimeRequirement
     role: JobChemist
-    time: 3600 #1h, klovn
-=======
-  - !type:OverallPlaytimeRequirement
-    time: 5h
-  - !type:RoleTimeRequirement
-    role: JobChemist
-    time: 3h
->>>>>>> upstream/master
+    time: 3h #1h, klovn
   guides: [ NuclearOperatives ]
 
 - type: antag
@@ -62,13 +49,8 @@
   setPreference: true
   objective: roles-antag-nuclear-operative-commander-objective
   requirements:
-<<<<<<< HEAD
 #  - !type:OverallPlaytimeRequirement, redundant, klovn
-#    time: 18000 # 5h
-=======
-  - !type:OverallPlaytimeRequirement
-    time: 5h
->>>>>>> upstream/master
+#    time: 5h # 5h
   - !type:DepartmentTimeRequirement
     department: Security
     time: 5h

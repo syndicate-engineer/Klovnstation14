@@ -106,17 +106,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         SyncTechnologyList(UnlockedCardsContainer, unlockedTech);
     }
 
-<<<<<<< HEAD
     public void UpdateInformationPanel(FancyResearchConsoleState state)
-=======
-    private void UpdateRediscoverButton()
-    {
-        RediscoverButton.Disabled = !HasAccess() || _serverPoints < _rediscoverCost || _timing.CurTime < _nextRediscover;
-        RediscoverButton.Text = Loc.GetString("research-console-menu-server-rediscover-button", ("cost", _rediscoverCost));
-    }
-
-    public void UpdateInformationPanel(ResearchConsoleBoundInterfaceState state)
->>>>>>> upstream/master
     {
         var amountMsg = new FormattedMessage();
         amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-menu-research-points-text",

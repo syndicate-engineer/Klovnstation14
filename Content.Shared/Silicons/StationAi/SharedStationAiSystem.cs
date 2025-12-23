@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // SPDX-FileCopyrightText: 2024 Baptr0b0t
 // SPDX-FileCopyrightText: 2024 Fildrance
 // SPDX-FileCopyrightText: 2024 metalgearsloth
@@ -15,9 +14,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-=======
 using Content.Shared.Access.Systems;
->>>>>>> upstream/master
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Managers;

@@ -97,7 +97,6 @@
   name: variety instrument collection
   description: Get your sad station movin' and groovin' with this catch-all variety pack! Contains seven different instruments.
   components:
-<<<<<<< HEAD
   - type: StorageFill
     contents:
       - id: SynthesizerInstrument
@@ -108,19 +107,6 @@
       - id: RecorderInstrument
       - id: GlockenspielInstrument
       - id: Boombox #ks14
-=======
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: SynthesizerInstrument
-        - id: AcousticGuitarInstrument
-        - id: TrumpetInstrument
-        - id: AccordionInstrument
-        - id: HarmonicaInstrument
-        - id: RecorderInstrument
-        - id: GlockenspielInstrument
->>>>>>> upstream/master
 
 - type: entity
   parent: CrateGenericSteel

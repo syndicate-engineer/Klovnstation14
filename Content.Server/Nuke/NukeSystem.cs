@@ -90,11 +90,7 @@ public sealed class NukeSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
-<<<<<<< HEAD
-    [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
-=======
     [Dependency] private readonly IGameTiming _timing = default!;
->>>>>>> upstream/master
 
     /// <summary>
     ///     Used to calculate when the nuke song should start playing for maximum kino with the nuke sfx

@@ -518,12 +518,10 @@
     - Supply
   - type: Puller
     needsHands: false
-<<<<<<< HEAD
   - type: HTN
     rootTask:
       task: BasicBotCompound
   - type: ControllableBot #KS14
-=======
 
 - type: entity
   parent: [ MobSiliconBase, MobCombat ]
@@ -561,4 +559,3 @@
     interactSuccessString: hugging-success-generic
     interactSuccessSound: /Audio/Effects/thudswoosh.ogg
     messagePerceivedByOthers: hugging-success-generic-others
->>>>>>> upstream/master

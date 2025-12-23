@@ -21,12 +21,7 @@
   lawString: law-Asimov-3
 
 - type: siliconLawset
-<<<<<<< HEAD
   id: Asimov
-=======
-  id: Crewsimov
-  name: law-crewsimov-name
->>>>>>> upstream/master
   laws:
   - ObeyAI
   - Asimov1

@@ -24,15 +24,9 @@
 
 - type: entity
   id: AsimovCircuitBoard
-<<<<<<< HEAD
   parent: BaseElectronics
   name: law board (Asimov)
   description: An electronics board containing the Asimov lawset.
-=======
-  parent: BaseSiliconLawboard
-  name: law board (Crewsimov)
-  description: An electronics board containing the Crewsimov lawset.
->>>>>>> upstream/master
   components:
   - type: SiliconLawProvider
     laws: Asimov

@@ -97,13 +97,8 @@
   - type: Projectile
     damage:
       types:
-<<<<<<< HEAD
-        Blunt: 3
-        Heat: 10
-=======
         Piercing: 7
         Heat: 3
->>>>>>> upstream/master
   - type: IgnitionSource
     ignited: true
 
