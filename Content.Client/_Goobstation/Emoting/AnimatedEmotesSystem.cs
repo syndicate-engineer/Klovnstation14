@@ -13,7 +13,6 @@
 
 using System.Numerics;
 using Content.Shared._Goobstation.Emoting;
-using Content.Shared.Chat;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
