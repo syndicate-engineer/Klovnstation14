@@ -6,14 +6,39 @@
 
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.EntityConditions;
 
 namespace Content.Shared._KS14.EntityEffects.EffectConditions;
 
-public sealed partial class BloodReagentThreshold : EntityEffectCondition
+/// <summary>
+/// Returns true if the entity's bloodstream contains a specified amount
+///     of a certain reagent.
+/// </summary>
+/// <inheritdoc cref="EntityConditionSystem{T, TCondition}"/>
+public sealed partial class BloodReagentThresholdConditionSystem : EntityConditionSystem<BloodstreamComponent, BloodReagentThresholdCondition>
+{
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+
+    protected override void Condition(Entity<BloodstreamComponent> entity, ref EntityConditionEvent<BloodReagentThresholdCondition> args)
+    {
+        if (!_solutionContainerSystem.ResolveSolution(entity.Owner, entity.Comp.BloodSolutionName, ref entity.Comp.BloodSolution, out var chemSolution))
+        {
+            Log.Error($"Couldn't find solution of name {entity.Comp.BloodSolutionName} in entity {ToPrettyString(entity.Owner)}");
+
+            args.Result = false;
+            return;
+        }
+
+        var quantity = chemSolution.GetTotalPrototypeQuantity(args.Condition.Reagent);
+        args.Result = quantity > args.Condition.Min && quantity < args.Condition.Max;
+    }
+}
+
+/// <inheritdoc cref="EntityCondition"/>
+public sealed partial class BloodReagentThresholdCondition : EntityConditionBase<BloodReagentThresholdCondition>
 {
     [DataField]
     public FixedPoint2 Min = FixedPoint2.Zero;
@@ -24,27 +49,10 @@ public sealed partial class BloodReagentThreshold : EntityEffectCondition
     [DataField(required: true)]
     public ProtoId<ReagentPrototype> Reagent;
 
-    [Dependency] private SharedSolutionContainerSystem? _solutionContainerSystem = null;
-
-    public override bool Condition(EntityEffectBaseArgs args)
+    public override string EntityConditionGuidebookText(IPrototypeManager prototype)
     {
-        // yeah wtf is this #2
-        _solutionContainerSystem ??= args.EntityManager.System<SharedSolutionContainerSystem>();
-
-        if (!args.EntityManager.TryGetComponent<BloodstreamComponent>(args.TargetEntity, out var blood) ||
-            !_solutionContainerSystem.ResolveSolution(args.TargetEntity, blood.ChemicalSolutionName, ref blood.ChemicalSolution, out var chemSolution))
-            throw new NotImplementedException();
-
-        var reagentID = new ReagentId(Reagent, null);
-        if (chemSolution.TryGetReagentQuantity(reagentID, out var quant))
-            return quant > Min && quant < Max;
-
-        return true;
-    }
-
-    public override string GuidebookExplanation(IPrototypeManager prototype)
-    {
-        prototype.TryIndex(Reagent, out var reagentProto);
+        if (!prototype.Resolve(Reagent, out var reagentProto))
+            return string.Empty;
 
         return Loc.GetString("reagent-effect-condition-guidebook-blood-reagent-threshold",
             ("reagent", reagentProto?.LocalizedName ?? Loc.GetString("reagent-effect-condition-guidebook-this-reagent")),
