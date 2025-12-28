@@ -383,3 +383,9 @@ Entries:
       message: 'Fixed broken technology sprite in R&D research console UI. '
   id: 48
   time: '2025-12-28T10:18:30.0000000+00:00'
+- author: nabegator220
+  changes:
+    - type: Add
+      message: Added voxes and dwarves back!
+  id: 49
+  time: '2025-12-28T10:54:39.0000000+00:00'
