@@ -397,3 +397,9 @@ Entries:
       message: Removed Amber, Plasma, Exo, Oasis from rotation
   id: 50
   time: '2025-12-28T10:55:37.0000000+00:00'
+- author: nabegator220
+  changes:
+    - type: Fix
+      message: Fixed the molar mixer.
+  id: 51
+  time: '2025-12-28T11:51:45.0000000+00:00'
