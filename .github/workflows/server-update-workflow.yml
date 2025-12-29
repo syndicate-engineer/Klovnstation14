@@ -25,6 +25,7 @@ jobs:
     steps:
     - name: Send POST update request to watchdog
       run: |
-        "curl -v \
-              -X POST \
-              -u ${{ vars.WATCHDOG_INSTANCE_NAME }}:${{ secrets.WATCHDOG_INSTANCE_API_TOKEN }} http://${{ secrets.WATCHDOG_IP_AND_PORT }}/instances/${{ vars.WATCHDOG_INSTANCE_NAME }}/update"
+        curl \
+            -v \
+            -X POST \
+            -u ${{ vars.WATCHDOG_INSTANCE_NAME }}:${{ secrets.WATCHDOG_INSTANCE_API_TOKEN }} http://${{ secrets.WATCHDOG_IP_AND_PORT }}/instances/${{ vars.WATCHDOG_INSTANCE_NAME }}/update
