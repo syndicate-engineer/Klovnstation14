@@ -1,3 +1,48 @@
+# SPDX-FileCopyrightText: 2020 AJCM-git
+# SPDX-FileCopyrightText: 2020 DrSmugleaf
+# SPDX-FileCopyrightText: 2020 Hugo Laloge
+# SPDX-FileCopyrightText: 2020 Pieter-Jan Briers
+# SPDX-FileCopyrightText: 2020 Swept
+# SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto
+# SPDX-FileCopyrightText: 2020 Ygg01
+# SPDX-FileCopyrightText: 2020 py01
+# SPDX-FileCopyrightText: 2021 Galactic Chimp
+# SPDX-FileCopyrightText: 2021 Paul Ritter
+# SPDX-FileCopyrightText: 2021 Tarlan2
+# SPDX-FileCopyrightText: 2021 buletsponge
+# SPDX-FileCopyrightText: 2022 Peptide90
+# SPDX-FileCopyrightText: 2022 Rane
+# SPDX-FileCopyrightText: 2022 Scribbles0
+# SPDX-FileCopyrightText: 2022 T-Stalker
+# SPDX-FileCopyrightText: 2022 Visne
+# SPDX-FileCopyrightText: 2022 keronshb
+# SPDX-FileCopyrightText: 2023 IProduceWidgets
+# SPDX-FileCopyrightText: 2023 TaralGit
+# SPDX-FileCopyrightText: 2023 and_a
+# SPDX-FileCopyrightText: 2023 lzk
+# SPDX-FileCopyrightText: 2024 Doomsdrayk
+# SPDX-FileCopyrightText: 2024 Errant
+# SPDX-FileCopyrightText: 2024 Kara
+# SPDX-FileCopyrightText: 2024 Nemanja
+# SPDX-FileCopyrightText: 2024 Plykiya
+# SPDX-FileCopyrightText: 2024 RiceMar1244
+# SPDX-FileCopyrightText: 2024 SlamBamActionman
+# SPDX-FileCopyrightText: 2024 ThatGuyUSA
+# SPDX-FileCopyrightText: 2024 metalgearsloth
+# SPDX-FileCopyrightText: 2024 nikthechampiongr
+# SPDX-FileCopyrightText: 2025 Andrew Malcolm O'Neill
+# SPDX-FileCopyrightText: 2025 ArtisticRoomba
+# SPDX-FileCopyrightText: 2025 BramvanZijp
+# SPDX-FileCopyrightText: 2025 Gerkada
+# SPDX-FileCopyrightText: 2025 K-Dynamic
+# SPDX-FileCopyrightText: 2025 LaCumbiaDelCoronavirus
+# SPDX-FileCopyrightText: 2025 Nox
+# SPDX-FileCopyrightText: 2025 RedBookcase
+# SPDX-FileCopyrightText: 2025 github_actions[bot]
+# SPDX-FileCopyrightText: 2025 nabegator220
+#
+# SPDX-License-Identifier: MIT
+
 - type: entity
   name: BaseSMG
   parent: BaseItem
@@ -65,6 +110,7 @@
   id: WeaponSubMachineGunAtreides
   description: A rare machine pistol hailing from the Corporate Wars. Its extremely high fire rate and compact profile make it useful in close quarters combat. Despite its age, it is in remarkably good condition. Feeds from .35 SMG magazines.
   components:
+  - type: GunExecutionWhitelist # Goob->KS14 port: gun execution
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/atreides.rsi
     layers:
@@ -88,6 +134,7 @@
   id: WeaponSubMachineGunC20r
   description: A classic and widespread submachine gun, infamous for its use by the Gorlex Marauders. One of the first homegrown Waffle Corp. designs, it remains in service today. Feeds from .35 SMG magazines.
   components:
+  - type: GunExecutionWhitelist # Goob->KS14 port: gun execution
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
     layers:
@@ -221,6 +268,7 @@
       steps: 5
       zeroVisible: true
     - type: Appearance
+    - type: GunExecutionWhitelist # Goob->KS14 port: gun execution # Goob->KS14 port: gun execution
 
 - type: entity
   name: WT550
@@ -228,6 +276,7 @@
   id: WeaponSubMachineGunWt550
   description: A truly unique firearm, the WT550 was designed by Nanotrasen's Small Arms Division as a compact submachine gun fully controllable with one hand. It contains an exotic internal recoil buffer and feeds from special top-mounted .35 magazines.
   components:
+  - type: GunExecutionWhitelist # Goob->KS14 port: gun execution
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/wt550.rsi
     layers:

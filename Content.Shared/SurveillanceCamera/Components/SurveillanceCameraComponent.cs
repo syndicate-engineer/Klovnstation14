@@ -4,7 +4,7 @@
 // SPDX-FileCopyrightText: 2025 DrSmugleaf
 // SPDX-FileCopyrightText: 2025 Hagvan
 //
-// SPDX-License-Identifier: AGPL-3.0-or-later
+// SPDX-License-Identifier: MIT
 
 using Content.Shared.DeviceNetwork;
 using Robust.Shared.GameStates;
