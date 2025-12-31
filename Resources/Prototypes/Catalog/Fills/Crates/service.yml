@@ -262,7 +262,7 @@
         - id: BookMedicalReferenceBook
         - id: BookHowToSurvive
         - id: BookChemicalCompendium
-        - id: BookSpaceLaw
+        # KS14: Removed spacelaw
 
 - type: entity
   parent: CrateFreezer

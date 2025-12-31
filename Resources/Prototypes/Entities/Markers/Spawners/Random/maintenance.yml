@@ -149,7 +149,7 @@
       - id: ClothingNeckCloakHerald
       - id: ClothingHeadHelmetTemplar
       # KS14 - Removed clokes
-      - id: ToySkeleton
+      - id: ToyFigurineSkeleton
       - id: Basketball
       - id: Football
       - id: TennisBall

@@ -59,8 +59,7 @@
           tableId: LotteryClothingEntityTable
         - !type:NestedSelector
           tableId: LotterySwagEntityTable
-        - !type:NestedSelector
-          tableId: LotteryPlushiesEntityTable
+        # KS14: Removed slop
         - !type:NestedSelector
           tableId: LotteryUsefulEntityTable
         - !type:NestedSelector
@@ -199,7 +198,11 @@
       orGroup: Swag
     #plushies
     # KS14: Removed slop plushies
-    #useful
+
+- type: entityTable
+  id: LotteryUsefulEntityTable
+  table: !type:GroupSelector
+    children:
     - id: AmeJar
     - id: Omnitool
       weight: 0.1

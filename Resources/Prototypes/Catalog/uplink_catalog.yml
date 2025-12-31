@@ -2167,7 +2167,7 @@
     - Botanist
 
 - type: listing
-  id: uplinkRiggedBoxingGlovesBoxer
+  id: uplinkRiggedBoxingGloves # KS14: Removed 'boxer' suffix
   name: uplink-rigged-boxing-gloves-name
   description: uplink-rigged-boxing-gloves-desc
   productEntity: ClothingHandsGlovesBoxingRigged
@@ -2181,7 +2181,7 @@
   conditions:
     - !type:BuyerJobCondition
       whitelist:
-        - Boxer
+      - Passenger # KS14: Changed from boxer to passenger
 
 - type: listing
   id: uplinkNecronomicon
