@@ -23,7 +23,7 @@ public sealed class MapMigrationSystem : EntitySystem
     [Dependency] private readonly IResourceManager _resMan = default!;
 
     private const string MigrationFile = "/migration.yml";
-    private const string MigrationFileKs = "/migration.yml_ks14"; // KS14
+    private const string MigrationFileKs = "/migration_ks14.yml"; // KS14
 
     public override void Initialize()
     {
