@@ -4,7 +4,7 @@
 
 # This base is created so we don't have to define the different sprite path for each plushie job.
 - type: entity
-  parent: PlushieLizard
+  parent: BaseItem # KS14: Changed to parent off BaseItem since we righteously and rightfully nuked PlushieLizard
   id: BasePlushieLizardJob
   abstract: true
   components:
