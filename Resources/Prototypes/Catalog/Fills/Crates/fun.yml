@@ -51,27 +51,15 @@
 #
 # SPDX-License-Identifier: MIT
 
-- type: entityTable
+- type: entityTable # KS14 - Removed most plushies
   id: AllPlushiesTable
   table: !type:GroupSelector
     children:
-    - id: PlushieBee
     - id: PlushieNar
       weight: 0.5
     - id: PlushieRatvar
       weight: 0.5
     - id: PlushieNuke
-    - id: PlushieSlime
-    - id: PlushieSnake
-    - id: PlushieExperiment
-    - !type:GroupSelector
-      children:
-      - id: PlushieLizard
-        weight: 9
-      - id: PlushieSpaceLizard
-        weight: 1
-      - id: PlushieLizardInversed
-        weight: 0.5
     - !type:GroupSelector
       children:
       - id: PlushieCarp
@@ -81,21 +69,6 @@
         weight: 0.25
       - id: PlushieRainbowCarp
         weight: 0.15
-    - id: PlushieVox
-    - id: PlushieRouny
-    - !type:GroupSelector
-      children:
-      - id: PlushieSharkBlue
-      - id: PlushieSharkGrey
-      - id: PlushieSharkPink
-    - id: PlushieAtmosian
-    - id: PlushieDiona
-    - id: PlushieXeno
-    - id: PlushieHampter
-    - id: PlushieMoth
-    - id: PlushieArachind
-    - id: PlushiePenguin
-    - id: PlushieVulp
 
 - type: entityTable
   id: AllPottedPlantsTable
@@ -139,6 +112,8 @@
         tableId: AllPottedPlantsTable
         rolls: !type:ConstantNumberSelector
           value: 5
+
+# KS14 - Removed slop
 
 - type: entity
   id: CrateFunInstrumentsVariety

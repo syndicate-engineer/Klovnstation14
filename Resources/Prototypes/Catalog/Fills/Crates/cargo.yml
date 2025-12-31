@@ -249,6 +249,7 @@
     - id: ClothingHeadHatCardborg
       prob: 0.01
       orGroup: Clothes
+    # KS14: Removed slop
     - id: ClothingUniformJumpskirtOfLife
       prob: 0.01
       orGroup: Clothes
@@ -292,6 +293,8 @@
     - id: ClothingBeltChampion
       prob: 0.01
       orGroup: Swag
+    #plushies
+    # KS14: Removed slop plushies
     #useful
     - id: AmeJar
       prob: 0.01
