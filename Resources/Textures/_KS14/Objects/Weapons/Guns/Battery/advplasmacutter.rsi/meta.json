@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from https://github.com/tgstation/tgstation/ at commit 47606e453e597caeba20e4a04b277c1aff546e5a, https://github.com/tgstation/tgstation/commit/47606e453e597caeba20e4a04b277c1aff546e5a",
+  "copyright": "Taken from https://github.com/tgstation/tgstation/ at commit 47606e453e597caeba20e4a04b277c1aff546e5a . Modified by FrauzJ",
   "size": {
     "x": 32,
     "y": 32
