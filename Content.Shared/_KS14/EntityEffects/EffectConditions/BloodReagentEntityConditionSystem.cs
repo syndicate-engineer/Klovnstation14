@@ -14,15 +14,15 @@ using Content.Shared.EntityConditions;
 namespace Content.Shared._KS14.EntityEffects.EffectConditions;
 
 /// <summary>
-/// Returns true if the entity's bloodstream contains a specified amount
-///     of a certain reagent.
+///     Returns true if the entity's bloodstream contains a specified amount
+///         of a certain reagent.
 /// </summary>
 /// <inheritdoc cref="EntityConditionSystem{T, TCondition}"/>
-public sealed partial class BloodReagentThresholdConditionSystem : EntityConditionSystem<BloodstreamComponent, BloodReagentThresholdCondition>
+public sealed partial class BloodReagentEntityConditionSystem : EntityConditionSystem<BloodstreamComponent, BloodReagentCondition>
 {
     [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
 
-    protected override void Condition(Entity<BloodstreamComponent> entity, ref EntityConditionEvent<BloodReagentThresholdCondition> args)
+    protected override void Condition(Entity<BloodstreamComponent> entity, ref EntityConditionEvent<BloodReagentCondition> args)
     {
         if (!_solutionContainerSystem.ResolveSolution(entity.Owner, entity.Comp.BloodSolutionName, ref entity.Comp.BloodSolution, out var chemSolution))
         {
@@ -38,7 +38,7 @@ public sealed partial class BloodReagentThresholdConditionSystem : EntityConditi
 }
 
 /// <inheritdoc cref="EntityCondition"/>
-public sealed partial class BloodReagentThresholdCondition : EntityConditionBase<BloodReagentThresholdCondition>
+public sealed partial class BloodReagentCondition : EntityConditionBase<BloodReagentCondition>
 {
     [DataField]
     public FixedPoint2 Min = FixedPoint2.Zero;
