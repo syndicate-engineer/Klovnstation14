@@ -200,7 +200,7 @@ public sealed class RCDTest : InteractionTest
 
         // Check that the cost of the deconstruction was subtracted from the current charges.
         newCharges = sCharges.GetCurrentCharges(ToServer(rcd));
-        Assert.That(initialCharges + RCDSystem.GetRefundedCost(settingDeconstruct.Cost) /* KS14/Goobstation */, Is.EqualTo(newCharges), "RCD has wrong amount of charges after deconstructing something.");
+        Assert.That(initialCharges + RCDSystem.GetRefundedCost(settingDeconstructTile.Cost) /* KS14/Goobstation */, Is.EqualTo(newCharges), "RCD has wrong amount of charges after deconstructing something.");
         initialCharges = newCharges;
 
         // Deconstruct the plating.
@@ -210,7 +210,7 @@ public sealed class RCDTest : InteractionTest
 
         // Check that the cost of the deconstruction was subtracted from the current charges.
         newCharges = sCharges.GetCurrentCharges(ToServer(rcd));
-        Assert.That(initialCharges + RCDSystem.GetRefundedCost(settingDeconstruct.Cost) /* KS14/Goobstation */, Is.EqualTo(newCharges), "RCD has wrong amount of charges after deconstructing something.");
+        Assert.That(initialCharges + RCDSystem.GetRefundedCost(settingDeconstructTile.Cost) /* KS14/Goobstation */, Is.EqualTo(newCharges), "RCD has wrong amount of charges after deconstructing something.");
         initialCharges = newCharges;
 
         // Deconstruct the lattice.
@@ -220,7 +220,7 @@ public sealed class RCDTest : InteractionTest
 
         // Check that the cost of the deconstruction was subtracted from the current charges.
         newCharges = sCharges.GetCurrentCharges(ToServer(rcd));
-        Assert.That(initialCharges + RCDSystem.GetRefundedCost(settingDeconstruct.Cost) /* KS14/Goobstation */, Is.EqualTo(newCharges), "RCD has wrong amount of charges after deconstructing something.");
+        Assert.That(initialCharges + RCDSystem.GetRefundedCost(settingDeconstructLattice.Cost) /* KS14/Goobstation */, Is.EqualTo(newCharges), "RCD has wrong amount of charges after deconstructing something.");
 
         // Wait for the visual effect to disappear.
         await RunSeconds(3);
