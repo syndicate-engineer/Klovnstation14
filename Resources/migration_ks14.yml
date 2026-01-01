@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2025 LaCumbiaDelCoronavirus
+# SPDX-FileCopyrightText: 2026 Gerkada
+#
+# SPDX-License-Identifier: MIT
+
 # see the start of migration.yml on how to use this
 
 #2025-10-29 Remove spacelaw
@@ -6,11 +11,13 @@ BookSpaceLaw: null
 #2025-12-23  Remove slop
 #plushies
 PlushieBee: null
+PlushieRGBee: null
 PlushieSlime: null
 PlushieSnake: null
 PlushieExperiment: null
 PlushieLizard: null
 PlushieSpaceLizard: null
+PlushieLizardMirrored: null
 PlushieLizardInversed: null
 PlushieVox: null
 PlushieRouny: null
@@ -21,7 +28,8 @@ PlushieDiona: null
 PlushieXeno: null
 PlushieHampter: null
 PlushieMoth: null
-PlushieArachnid: null
+PlushieArachind: null
+PlushieAtmosian: null
 PlushiePenguin: null
 #crates
 CrateFunPlushie: null
