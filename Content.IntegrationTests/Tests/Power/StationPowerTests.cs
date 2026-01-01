@@ -20,21 +20,7 @@ public sealed class StationPowerTests
     /// </summary>
     private const float MinimumPowerDurationSeconds = 10 * 60;
 
-    private static readonly string[] GameMaps =
-    [
-        "Bagel",
-        "Box",
-        "Elkridge",
-        "Fland",
-        "Marathon",
-        "Oasis",
-        "Packed",
-        "Plasma",
-        "Relic",
-        "Snowball",
-        "Reach",
-        "Exo",
-    ];
+    private static readonly string[] GameMaps = PostMapInitTest.GameMaps; // KS14: Made same
 
     [Explicit]
     [Test, TestCaseSource(nameof(GameMaps))]

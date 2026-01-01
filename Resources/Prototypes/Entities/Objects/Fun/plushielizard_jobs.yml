@@ -208,19 +208,19 @@
   components:
   - type: Sprite
     state: mime
-  - type: EmitSoundOnUse
-    sound: null # mime is silent...
-  - type: EmitSoundOnLand
-    sound: null
-  - type: EmitSoundOnActivate
-    sound: null
-  - type: EmitSoundOnTrigger
-    sound: null
-  - type: EmitSoundOnCollide
-    sound: null
-  - type: Edible
-    useSound: null
   # KS14: this causes testfails so who cares
+  # - type: EmitSoundOnUse
+  #   sound: null # mime is silent...
+  # - type: EmitSoundOnLand
+  #   sound: null
+  # - type: EmitSoundOnActivate
+  #   sound: null
+  # - type: EmitSoundOnTrigger
+  #   sound: null
+  # - type: EmitSoundOnCollide
+  #   sound: null
+  # - type: Edible
+  #   useSound: null
   # - type: MeleeWeapon
   #   wideAnimationRotation: 180
   #   soundHit: null

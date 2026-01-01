@@ -78,7 +78,7 @@ public sealed class SharedChargeByMaterialStorageSystem : EntitySystem
             !TryComp<BatteryComponent>(entity, out var batteryComponent))
             return;
 
-        materialStorageComponent.StorageLimit = (int)MathF.Ceiling((batteryComponent.MaxCharge - _batterySystem.GetCharge((entity.Owner, batteryComponent))) / entity.Comp.GainRatio);
+        materialStorageComponent.StorageLimit = (int)MathF.Ceiling((batteryComponent.MaxCharge - batteryComponent.StartingCharge) / entity.Comp.GainRatio);
         Dirty(entity.Owner, materialStorageComponent);
     }
 
