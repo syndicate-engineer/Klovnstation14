@@ -1,4 +1,5 @@
 # All of the `maxItems` fields of all discount categories should always sum to 8; whatever is set in StoreDiscountAndRefund test (yes really, the value isnt anywhere else)
+#     and also the default value of the totalAvailableDiscounts parameter in StoreDiscountSystem.InitializeDiscounrs
 
 - type: discountCategory
   id: rareDiscounts # Dirty-cheap items that are rarely used and can be discounted to 0-ish cost to encourage usage.
