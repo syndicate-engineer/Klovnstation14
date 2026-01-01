@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.IntegrationTests.Tests.Interaction;
+using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.RCD;
 using Content.Shared.RCD.Components;
@@ -12,7 +13,27 @@ namespace Content.IntegrationTests.Tests.Construction;
 
 public sealed class RCDTest : InteractionTest
 {
-    private static readonly EntProtoId RCDProtoId = "RCD";
+    private const string RCDProtoId = "RCD";
+
+    // KS14
+    private const string InfiniteChargeRcdProtoId = "RCDTestInfiniteCharges";
+
+    private const int RcdChargeCount = 10000;
+
+    // KS14
+    // This, strangely enough, can't be `const`
+    // maxCharges is infinite because it just is, ok? Dont change it or tests will fail.
+    [TestPrototypes]
+    private static readonly string Prototypes = @$"
+- type: entity
+  parent: {RCDProtoId}
+  id: {InfiniteChargeRcdProtoId}
+  components:
+  - type: LimitedCharges
+    maxCharges: {int.MaxValue}
+    lastCharges: {RcdChargeCount}
+";
+
     private static readonly ProtoId<RCDPrototype> RCDSettingWall = "WallSolid";
     private static readonly ProtoId<RCDPrototype> RCDSettingAirlock = "Airlock";
     private static readonly ProtoId<RCDPrototype> RCDSettingPlating = "Plating";
@@ -56,17 +77,11 @@ public sealed class RCDTest : InteractionTest
         Assert.That(ProtoMan.TryIndex(RCDSettingDeconstructTile, out var settingDeconstructTile), $"RCDPrototype not found: {RCDSettingDeconstructTile}.");
         Assert.That(ProtoMan.TryIndex(RCDSettingDeconstructLattice, out var settingDeconstructLattice), $"RCDPrototype not found: {RCDSettingDeconstructLattice}.");
 
-        var rcd = await PlaceInHands(RCDProtoId);
+        var rcd = await PlaceInHands(InfiniteChargeRcdProtoId);
 
-        // Give the RCD enough charges to do everything.
         var sCharges = SEntMan.System<SharedChargesSystem>();
-        await Server.WaitPost(() =>
-        {
-            sCharges.SetMaxCharges(ToServer(rcd), 10000);
-            sCharges.SetCharges(ToServer(rcd), 10000);
-        });
         var initialCharges = sCharges.GetCurrentCharges(ToServer(rcd));
-        Assert.That(initialCharges, Is.EqualTo(10000), "RCD did not have the correct amount of charges.");
+        Assert.That(initialCharges, Is.EqualTo(RcdChargeCount), "RCD did not have the correct amount of charges.");
 
         // Make sure that picking it up did not open the UI.
         Assert.That(IsUiOpen(RcdUiKey.Key), Is.False, "RCD UI was opened when picking it up.");
