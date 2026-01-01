@@ -19,6 +19,9 @@ public sealed class StoreDiscountSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
+    // KS14: De-hardcoded value and added StoreDiscountSystem.DefaultTotalAvailableDiscounts
+    public const int DefaultTotalAvailableDiscounts = 8;
+
     /// <inheritdoc />
     public override void Initialize()
     {
@@ -70,7 +73,7 @@ public sealed class StoreDiscountSystem : EntitySystem
 
     private IReadOnlyList<StoreDiscountData> InitializeDiscounts(
         IReadOnlyCollection<ListingDataWithCostModifiers> listings,
-        int totalAvailableDiscounts = 8
+        int totalAvailableDiscounts = DefaultTotalAvailableDiscounts // KS14: De-hardcoded value and added StoreDiscountSystem.DefaultTotalAvailableDiscounts
     )
     {
         // Get list of categories with cumulative weights.

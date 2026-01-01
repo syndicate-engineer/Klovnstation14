@@ -2483,7 +2483,7 @@
   name: uplink-briefcase-gun-name
   description: uplink-briefcase-gun-desc
   productEntity: WeaponSubMachineGunBriefcase
-  discountCategory: veryRareDiscounts
+  discountCategory: rareDiscounts # KS14
   discountDownTo:
     Telecrystal: 30
   cost:
