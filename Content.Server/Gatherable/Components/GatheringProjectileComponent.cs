@@ -26,5 +26,5 @@ public sealed partial class GatheringProjectileComponent : Component
     ///         something that can't be gathered?
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField]
-    public bool DeleteOnHittingUngatherable = false;
+    public bool DeleteOnHittingUngatherable = true;
 }
