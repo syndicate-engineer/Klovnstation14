@@ -555,3 +555,13 @@ Entries:
       message: Tested, works.
   id: 70
   time: '2026-01-04T00:04:03.0000000+00:00'
+- author: LaCumbiaDelCoronavirus
+  changes:
+    - type: Fix
+      message: >-
+        Fixed problems with flip emotes etc. Desword now properly makes you
+        flip.
+    - type: Fix
+      message: Fixed paper labels on canisters giving epic fail sprites.
+  id: 71
+  time: '2026-01-04T18:19:56.0000000+00:00'
