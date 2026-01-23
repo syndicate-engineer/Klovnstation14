@@ -1,3 +1,12 @@
+// SPDX-FileCopyrightText: 2022 DrSmugleaf
+// SPDX-FileCopyrightText: 2022 Leon Friedrich
+// SPDX-FileCopyrightText: 2022 metalgearsloth
+// SPDX-FileCopyrightText: 2023 Kara
+// SPDX-FileCopyrightText: 2026 LaCumbiaDelCoronavirus
+// SPDX-FileCopyrightText: 2026 github_actions[bot]
+//
+// SPDX-License-Identifier: MIT
+
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
@@ -13,6 +22,7 @@ public sealed partial class FlyBySoundComponent : Component
     /// Probability that the sound plays
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("prob")]
+    [AutoNetworkedField] // KS14: Fpv drones
     public float Prob = 0.10f;
 
     [ViewVariables(VVAccess.ReadWrite), DataField("sound")]

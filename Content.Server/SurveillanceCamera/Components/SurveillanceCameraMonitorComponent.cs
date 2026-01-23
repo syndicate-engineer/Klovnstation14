@@ -6,6 +6,9 @@
 // SPDX-FileCopyrightText: 2025 Aiden
 // SPDX-FileCopyrightText: 2025 Hagvan
 // SPDX-FileCopyrightText: 2025 John Willis
+// SPDX-FileCopyrightText: 2025 nabegator220
+// SPDX-FileCopyrightText: 2026 LaCumbiaDelCoronavirus
+// SPDX-FileCopyrightText: 2026 github_actions[bot]
 //
 // SPDX-License-Identifier: MIT
 
@@ -14,7 +17,7 @@ using Robust.Shared.Map; // Goobstation
 namespace Content.Server.SurveillanceCamera;
 
 [RegisterComponent]
-[Access(typeof(SurveillanceCameraMonitorSystem))]
+[Access(typeof(SurveillanceCameraMonitorSystem), Other = AccessPermissions.ReadExecute /* KS14 Change: FPV drones require this */)]
 public sealed partial class SurveillanceCameraMonitorComponent : Component
 {
     // Currently active camera viewed by this monitor.
@@ -62,4 +65,11 @@ public sealed partial class SurveillanceCameraMonitorComponent : Component
     [ViewVariables]
     // The subnets known by this camera monitor.
     public Dictionary<string, string> KnownSubnets { get; } = new();
+
+    // KS14 Change: FPVs
+    /// <summary>
+    ///     Never automatically do update.
+    /// </summary>
+    [DataField, ViewVariables]
+    public bool NeverAutomaticallyHeartbeat = false;
 }
