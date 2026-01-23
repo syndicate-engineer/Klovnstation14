@@ -1,4 +1,9 @@
-﻿using Content.Shared.Administration.BanList;
+// SPDX-FileCopyrightText: 2023 DrSmugleaf
+// SPDX-FileCopyrightText: 2026 Pieter-Jan Briers
+//
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Administration.BanList;
 using Robust.Client.UserInterface.Controls;
 
 namespace Content.Client.Administration.UI.BanList;
