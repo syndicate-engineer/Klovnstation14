@@ -35,13 +35,13 @@ public sealed class PortalSystem : SharedPortalSystem
     }
 
     // KS14 Implementation
-    public override bool OnTelefrag(Entity<BodyComponent?> hitEntity, in Entity<PortalComponent> portalEntity)
+    public override bool OnTelefrag(EntityUid hitUid, in Entity<PortalComponent> portalEntity)
     {
-        if (!base.OnTelefrag(hitEntity, portalEntity))
+        if (!base.OnTelefrag(hitUid, portalEntity))
             return false;
 
         // whatever lmao
-        _destructibleSystem.DestroyEntity(hitEntity.Owner);
+        _destructibleSystem.DestroyEntity(hitUid);
         return true;
     }
 }
