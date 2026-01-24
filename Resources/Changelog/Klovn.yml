@@ -617,3 +617,9 @@ Entries:
       message: Removed random disarms from shoving.
   id: 78
   time: '2026-01-24T08:53:04.0000000+00:00'
+- author: fgsdffgsdfgdsfg
+  changes:
+    - type: Tweak
+      message: Ore bag works through pockets too!
+  id: 79
+  time: '2026-01-24T10:34:46.0000000+00:00'
