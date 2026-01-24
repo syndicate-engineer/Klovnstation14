@@ -208,12 +208,28 @@
     slots:
     - Snout
 
+# KS14: Added abstract unfoldable
 - type: entity
-  parent: [ClothingMaskClownBase, BaseFoldable]
+  parent: ClothingMaskClownBase
+  id: BaseClothingMaskClownUnfoldable
+  description: A clown mask featuring a foldable wig; a true prankster's attire.
+  abstract: true
+  components:
+  - type: Appearance
+  - type: Tag
+    tags:
+    - ClownMask
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    slots:
+    - Snout
+
+- type: entity
+  parent: [BaseClothingMaskClownUnfoldable, BaseFoldable] # KS14
   id: ClothingMaskClown
   description: A clown mask featuring a foldable wig; a true prankster's attire.
   components:
-  - type: Appearance
   - type: Foldable
     canFoldInsideContainer: true
   - type: FoldableClothing
@@ -227,14 +243,6 @@
     - state: icon-opened
       map: [ "foldedLayer" ]
       visible: false
-  - type: Tag
-    tags:
-    - ClownMask
-    - HamsterWearable
-    - WhitelistChameleon
-  - type: HideLayerClothing
-    slots:
-    - Snout
 
 - type: entity
   parent: ClothingMaskClownBase
