@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2025 Ciarán Walsh
+// SPDX-FileCopyrightText: 2026 Princess Cheeseballs
+// SPDX-FileCopyrightText: 2026 github_actions[bot]
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Client.Guidebook.RichText;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
@@ -42,7 +48,7 @@ public sealed class GuidebookRichPrototypeLink : Control, IPrototypeLinkControl
     public void SetMessage(FormattedMessage message)
     {
         _message = message;
-        _richTextLabel.SetMessage(_message);
+        _richTextLabel.SetMessage(_message, tagsAllowed: null);
     }
 
     public IPrototype? LinkedPrototype { get; set; }
