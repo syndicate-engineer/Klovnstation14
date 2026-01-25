@@ -623,3 +623,9 @@ Entries:
       message: Ore bag works through pockets too!
   id: 79
   time: '2026-01-24T10:34:46.0000000+00:00'
+- author: FrauZj
+  changes:
+    - type: Tweak
+      message: shove does 6.5 times less dmg
+  id: 80
+  time: '2026-01-25T20:03:49.0000000+00:00'
