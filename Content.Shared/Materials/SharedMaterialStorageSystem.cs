@@ -5,10 +5,10 @@
 // SPDX-FileCopyrightText: 2024 Plykiya
 // SPDX-FileCopyrightText: 2024 Zylofan
 // SPDX-FileCopyrightText: 2024 metalgearsloth
-// SPDX-FileCopyrightText: 2025 LaCumbiaDelCoronavirus
 // SPDX-FileCopyrightText: 2025 Nemanja
 // SPDX-FileCopyrightText: 2025 Winkarst
 // SPDX-FileCopyrightText: 2025 github_actions[bot]
+// SPDX-FileCopyrightText: 2026 LaCumbiaDelCoronavirus
 //
 // SPDX-License-Identifier: MIT
 
@@ -22,6 +22,9 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Shared.Research.Components;
+using Robust.Shared.Audio.Systems; // KS14: Added to shared
+using Content.Shared.Popups;
+using Content.Shared.IdentityManagement; // KS14: Added to shared
 
 namespace Content.Shared.Materials;
 
@@ -36,6 +39,8 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly SharedStackSystem _heap = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!; // KS14: Added to shared
+    [Dependency] private readonly SharedPopupSystem _popup = default!; // KS14: Added to shared
 
     /// <summary>
     /// Default volume for a sheet if the material's entity prototype has no material composition.
@@ -380,6 +385,9 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         // KS14: added a bunch of new logic here
 
         var isStack = TryComp<StackComponent>(toInsert, out var stackComponent);
+        var shouldDelete = false;
+
+        // This is the multiplier, for the materials that the material-entity is composed of, that determines how much of that material is actually added.
         var maximumMultiplier = isStack ? stackComponent!.Count : 1;
 
         var totalVolume = 0;
@@ -413,21 +421,28 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
                 //totalVolume = takenStackUnits * volumePerStackUnit;
 
                 if (takenStackUnits >= stackComponent!.Count)
-                    PredictedQueueDel(toInsert);
+                    shouldDelete = true;
                 else
-                    _heap.SetCount(toInsert, stackComponent!.Count - takenStackUnits, component: stackComponent);
+                    _heap.SetCount((toInsert, stackComponent), stackComponent!.Count - takenStackUnits);
 
                 maximumMultiplier = takenStackUnits;
             }
             else
-                PredictedQueueDel(toInsert);
+                shouldDelete = true;
         }
         else if (!CanTakeVolume(receiver, totalVolume, storage, localOnly: true))
             return false;
 
+        // TODO LCDC: test if this works with entities made up of more than 1 material
         foreach (var (mat, vol) in composition.MaterialComposition)
         {
-            TryChangeMaterialAmount(receiver, mat, Math.Min(vol * maximumMultiplier, storage.StorageLimit!.Value - oldTotalVolume), storage);
+            var amountAdded = vol * maximumMultiplier;
+
+            // amount of material added will be limited so that it doesnt go over storagelimit
+            if (storage.StorageLimit is { } storageLimit)
+                amountAdded = Math.Min(amountAdded, storageLimit - oldTotalVolume);
+
+            TryChangeMaterialAmount(receiver, mat, amountAdded, storage);
         }
 
         var insertingComp = EnsureComp<InsertingMaterialStorageComponent>(receiver);
@@ -442,6 +457,18 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
 
         var ev = new MaterialEntityInsertedEvent(material);
         RaiseLocalEvent(receiver, ref ev);
+
+        // KS14: moved ts to shared
+        _audio.PlayPredicted(storage.InsertingSound, receiver, user);
+        _popup.PopupPredicted(Loc.GetString("machine-insert-item",
+                ("user", user),
+                ("machine", receiver),
+                ("item", Identity.Name(toInsert, EntityManager))),
+            receiver, user);
+
+        if (shouldDelete)
+            PredictedQueueDel(toInsert);
+
         return true;
     }
 
@@ -465,7 +492,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     {
         if (args.Handled || !component.InsertOnInteract)
             return;
-        args.Handled = TryInsertMaterialEntity(args.User, args.Used, uid, component);
+        args.Handled |= TryInsertMaterialEntity(args.User, args.Used, uid, component);
     }
 
     private void OnDatabaseModified(Entity<MaterialStorageComponent> ent, ref TechnologyDatabaseModifiedEvent args)
