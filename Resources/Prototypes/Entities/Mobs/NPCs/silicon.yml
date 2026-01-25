@@ -182,6 +182,9 @@
   - type: HTN
     rootTask:
       task: FirebotCompound
+    blackboard:
+      NavInteract: !type:Bool
+        true
   - type: SolutionContainerManager
     solutions:
       spray:
@@ -235,6 +238,9 @@
   - type: HTN
     rootTask:
       task: BasicBotCompound
+    blackboard:
+      NavInteract: !type:Bool
+        true
   - type: Slippery
     slipData:
       launchForwardsMultiplier: 2
@@ -358,6 +364,9 @@
   - type: HTN
     rootTask:
       task: CleanbotCompound
+    blackboard:
+      NavInteract: !type:Bool
+        true
   - type: DrainableSolution
     solution: drainBuffer
   - type: InteractionPopup
@@ -403,6 +412,9 @@
   - type: HTN
     rootTask:
       task: MedibotCompound
+    blackboard:
+      NavInteract: !type:Bool
+        true
   - type: Construction
     graph: MediBot
     node: bot
@@ -453,6 +465,9 @@
   - type: HTN
     rootTask:
       task: BasicBotCompound
+    blackboard:
+      NavInteract: !type:Bool
+        true
   - type: ControllableBot #KS14
 
 - type: entity
@@ -528,6 +543,9 @@
   - type: HTN
     rootTask:
       task: BasicBotCompound
+    blackboard:
+      NavInteract: !type:Bool
+        true
   - type: ControllableBot #KS14
 
 - type: entity
@@ -562,7 +580,11 @@
   - type: HTN
     rootTask:
       task: HugBotCompound
+    blackboard:
+      NavInteract: !type:Bool
+        true
   - type: InteractionPopup
     interactSuccessString: hugging-success-generic
     interactSuccessSound: /Audio/Effects/thudswoosh.ogg
     messagePerceivedByOthers: hugging-success-generic-others
+  - type: ControllableBot #KS14

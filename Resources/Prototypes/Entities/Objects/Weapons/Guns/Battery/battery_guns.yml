@@ -238,7 +238,7 @@
 
 - type: entity
   name: svalinn laser pistol
-  parent: [BaseWeaponPowerCellSmall, BaseSecurityContraband]
+  parent: [BaseWeaponPowerCell, BaseSecurityContraband] #KS14 - fits hi-cap cells too
   id: WeaponLaserSvalinn
   description: A cheap and widely used laser pistol.
   components:
