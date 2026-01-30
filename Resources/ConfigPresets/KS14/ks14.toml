@@ -2,7 +2,7 @@
 
 [game]
 # Changes the name of the server as it appears in the lobby and launcher.
-hostname = "Klovnstation 14"
+hostname = "[EN][LRP] Klovnstation 14"
 desc = "Klovnstation 14 is a minimal rule server designed around said ruleset."
 maxplayers = 120
 soft_max_players = 90
@@ -34,4 +34,5 @@ cooldown_seconds = 0.05
 [hub]
 advertise = true
 tags = "lang:en,region:eu_w,rp:low"
-hub_urls = "https://hub.simplestation.org/, https://hub.singularity14.co.uk/, https://cdn.spacestationmultiverse.com/hub/"
+hub_urls = "https://hub.simplestation.org/, https://hub.singularity14.co.uk/"
+server_url = "ss14://game.klovnstation.org"
