@@ -1,20 +1,49 @@
-- type: lobbyBackground
-  id: 1984hnk
-  background: /Textures/LobbyScreens/1984hnk.png
+# SPDX-FileCopyrightText: 2022 Moony
+# SPDX-FileCopyrightText: 2022 hubismal
+# SPDX-FileCopyrightText: 2022 keronshb
+# SPDX-FileCopyrightText: 2024 Alekshhh
+# SPDX-FileCopyrightText: 2024 Hannah Giovanna Dawson
+# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers
+# SPDX-FileCopyrightText: 2024 PoorMansDreams
+# SPDX-FileCopyrightText: 2024 Psychpsyo
+# SPDX-FileCopyrightText: 2024 Snicket
+# SPDX-FileCopyrightText: 2024 T-Stalker
+# SPDX-FileCopyrightText: 2024 Terraspark4941
+# SPDX-FileCopyrightText: 2024 Ubaser
+# SPDX-FileCopyrightText: 2024 brainfood1183
+# SPDX-FileCopyrightText: 2025 LaCumbiaDelCoronavirus
+# SPDX-FileCopyrightText: 2025 Matthew Herber
+# SPDX-FileCopyrightText: 2026 github_actions[bot]
+# SPDX-FileCopyrightText: 2026 nabegator220
+#
+# SPDX-License-Identifier: MPL-2.0
 
 - type: lobbyBackground
-  id: engiwherespower
+  id: 198HNK
+  background: /Textures/LobbyScreens/198hnk.png
+  title: lobby-state-background-198hnk-title
+  artist: lobby-state-background-198hnk-artist
+
+- type: lobbyBackground
+  id: EngiPower
   background: /Textures/LobbyScreens/engiwherespower.png
+  title: lobby-state-background-engiwherespower-title
+  artist: lobby-state-background-engiwherespower-artist
 
 - type: lobbyBackground
-  id: fucktiders
+  id: FuckTiders
   background: /Textures/LobbyScreens/fucktiders.png
+  title: lobby-state-background-fucktiders-title
+  artist: lobby-state-background-fucktiders-artist
 
 - type: lobbyBackground
-  id: middlestation
+  id: Middlestation
   background: /Textures/LobbyScreens/middlestation.png
+  title: lobby-state-background-middlestation-title
+  artist: lobby-state-background-middlestation-artist
 
 - type: lobbyBackground
-  id: smartguy
+  id: Smartguy
   background: /Textures/LobbyScreens/smartguy.png
-
+  title: lobby-state-background-smartguy-title
+  artist: lobby-state-background-smartguy-artist
