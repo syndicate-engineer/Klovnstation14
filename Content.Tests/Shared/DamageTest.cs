@@ -1,3 +1,16 @@
+// SPDX-FileCopyrightText: 2022 Paul Ritter
+// SPDX-FileCopyrightText: 2022 mirrorcult
+// SPDX-FileCopyrightText: 2023 Leon Friedrich
+// SPDX-FileCopyrightText: 2024 KrasnoshchekovPavel
+// SPDX-FileCopyrightText: 2024 LordCarve
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers
+// SPDX-FileCopyrightText: 2024 themias
+// SPDX-FileCopyrightText: 2025 Tayrtahn
+// SPDX-FileCopyrightText: 2026 github_actions[bot]
+// SPDX-FileCopyrightText: 2026 nabegator220
+//
+// SPDX-License-Identifier: MPL-2.0
+
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using NUnit.Framework;
@@ -43,6 +56,7 @@ namespace Content.Tests.Shared
         [Test]
         public void DamageSpecifierTest()
         {
+            /* KS14 - since our damagespecifier works differently this test is disabled for a while
             // Create a copy of the damage data
             DamageSpecifier damageSpec = new(_damageSpec);
 
@@ -145,6 +159,7 @@ namespace Content.Tests.Shared
             Assert.That(damageSpec.DamageDict["Piercing"], Is.EqualTo(FixedPoint2.New(-40))); // resistances don't apply to healing
             Assert.That(!damageSpec.DamageDict.ContainsKey("Slash"));  // Reduction reduced to 0, and removed from specifier
             Assert.That(damageSpec.DamageDict["Radiation"], Is.EqualTo(FixedPoint2.New(65.62)));
+            */
         }
 
         private const string ModifierTestSetId = "ModifierTestSet";

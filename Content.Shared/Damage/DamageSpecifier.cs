@@ -1,4 +1,25 @@
+// SPDX-FileCopyrightText: 2022 Moony
+// SPDX-FileCopyrightText: 2022 Paul Ritter
+// SPDX-FileCopyrightText: 2022 Sam Weaver
+// SPDX-FileCopyrightText: 2022 ShadowCommander
+// SPDX-FileCopyrightText: 2022 metalgearsloth
+// SPDX-FileCopyrightText: 2022 mirrorcult
+// SPDX-FileCopyrightText: 2022 wrexbe
+// SPDX-FileCopyrightText: 2023 Darkie
+// SPDX-FileCopyrightText: 2023 DrSmugleaf
+// SPDX-FileCopyrightText: 2024 LordCarve
+// SPDX-FileCopyrightText: 2024 themias
+// SPDX-FileCopyrightText: 2025 Hannah Giovanna Dawson
+// SPDX-FileCopyrightText: 2025 LaCumbiaDelCoronavirus
+// SPDX-FileCopyrightText: 2025 Leon Friedrich
+// SPDX-FileCopyrightText: 2025 slarticodefast
+// SPDX-FileCopyrightText: 2026 github_actions[bot]
+// SPDX-FileCopyrightText: 2026 nabegator220
+//
+// SPDX-License-Identifier: MPL-2.0
+
 using System.Linq;
+using System.Collections.Generic; //KS14
 using System.Text.Json.Serialization;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
@@ -44,6 +65,37 @@ namespace Content.Shared.Damage
         [ViewVariables(VVAccess.ReadWrite)]
         [IncludeDataField(customTypeSerializer: typeof(DamageSpecifierDictionarySerializer), readOnly: true)]
         public Dictionary<string, FixedPoint2> DamageDict { get; set; } = new();
+
+        /// <summary>
+        ///     KS14 addition
+        ///     This is just a way for you to specify that a projectile/whatever gets through the percentile reduction given by armor.
+        ///     It works via a percentile system - 0 is no AP, 1 is full AP.
+        ///     If you go over 1 or under -1 the system will make stupid mistakes, please do not do it
+        ///     I removed the clamp because I trust the sanity of my contribs and I can squeeze some minimal perf out by removing it
+        ///     Why -1? Because you can set it to -1 to make armor twice as effective against it - could be fun for hollow points!
+        /// </summary>
+
+        [DataField("percentilePenetration", customTypeSerializer: typeof(PrototypeIdDictionarySerializer<float, DamageTypePrototype>))]
+        public Dictionary<string, float>? PercentilePenetration;
+
+        /// <summary>
+        ///     KS14
+        ///     This is just a way for you to specify that a projectile/whatever ignores some flat reduction given by armor.
+        ///     It works by subtracting these reductions from the armor's reductions, of course that can't go below zero.
+        ///     If you set this to a negative number it actually adds to the flat resistances - could be useful for something.
+        /// </summary>
+
+        [DataField("flatPenetration", customTypeSerializer: typeof(PrototypeIdDictionarySerializer<float, DamageTypePrototype>))]
+        public Dictionary<string, float>? FlatPenetration;
+
+        /// <summary>
+        ///     KS14
+        ///     Right now percentile damage penetration applies to flat damage resistances
+        ///     If an armor has 10 flat slash resistance but you have 40% slash ap then it decreases that resist to 6 slash
+        ///     This is so its more intuitive (having percentile ap ruins everyone). You can however disable it
+        /// </summary>
+        [DataField("disableCrossInteraction")]
+        public bool disableCrossInteraction = false;
 
         /// <summary>
         ///     Returns a sum of the damage values.
@@ -101,6 +153,12 @@ namespace Content.Shared.Damage
         public DamageSpecifier(DamageSpecifier damageSpec)
         {
             DamageDict = new(damageSpec.DamageDict);
+            //KS14 start
+            if (damageSpec.PercentilePenetration != null)
+                PercentilePenetration = new(damageSpec.PercentilePenetration);
+            if (damageSpec.FlatPenetration != null)
+                FlatPenetration = new(damageSpec.FlatPenetration);
+            //KS14 end
         }
 
         /// <summary>
@@ -145,6 +203,13 @@ namespace Content.Shared.Damage
             DamageSpecifier newDamage = new();
             newDamage.DamageDict.EnsureCapacity(damageSpec.DamageDict.Count);
 
+            //basically all of this is KS modified past this point
+            //KS14 START
+
+            // Capture nullable AP dictionaries into locals to satisfy nullable analysis and avoid repeated lookups.
+            var percentilePenDict = damageSpec.PercentilePenetration ?? new Dictionary<string, float>();
+            var flatPenDict = damageSpec.FlatPenetration ?? new Dictionary<string, float>();
+
             foreach (var (key, value) in damageSpec.DamageDict)
             {
                 if (value == 0)
@@ -156,17 +221,44 @@ namespace Content.Shared.Damage
                     continue;
                 }
 
-                float newValue = value.Float();
+                float newValueFlat = value.Float();
+                float newValuePercentile = value.Float();
 
                 if (modifierSet.FlatReduction.TryGetValue(key, out var reduction))
-                    newValue = Math.Max(0f, newValue - reduction); // flat reductions can't heal you
+                {
+                    if (!damageSpec.disableCrossInteraction && percentilePenDict.TryGetValue(key, out var percentileDecreaseOfFlatRes)) // If you have 40% pierce pen it makes every flat resist only 60% of its former status - this is done to be more intuitive as per _uranium's request - KS14
+                    {
+                        var multiplier = 1 - percentileDecreaseOfFlatRes;
+                        reduction *= multiplier;
+                    }
+                    if (flatPenDict.TryGetValue(key, out var flatPenetrationForDamType))
+                    {
+                        if (reduction > 0f)
+                            reduction = Math.Max(0f, reduction - flatPenetrationForDamType); // dont go into the negatives
+                        else
+                        {
+                            reduction -= flatPenetrationForDamType; //this fixes negative reductions that are supposed to increase damage and lets them stack. truly an unholy combo
+                        }
+                    }
+                    newValueFlat = Math.Max(0f, newValueFlat - reduction); // flat reductions can't heal you
+                }
 
                 if (modifierSet.Coefficients.TryGetValue(key, out var coefficient))
-                    newValue *= coefficient; // coefficients can heal you, e.g. cauterizing bleeding
+                {
+                    var percentileReduction = 1-coefficient; //coefficient is how much of the dmg you take. if its .7, that means the actual damage reduction is 30%
+                    if (percentilePenDict.TryGetValue(key, out var percentilePenetrationForDamType))
+                    {
+                        var multiplier = 1 - percentilePenetrationForDamType; //penetration is similarly a coefficient. if its .2, we strip away 8O% of the enemys defense
+                        percentileReduction *= multiplier;  //if the enemy reduces 30% of incoming damage, and we punch through half that, that means the result is 15%
+                    }
+                    newValuePercentile *= (1-percentileReduction); //if we now reduce 15% of incoming damage, that means the damage needs to be multiplied by .85
+                    // coefficients can also heal you, e.g. cauterizing bleeding
+                }
 
-                if (newValue != 0)
-                    newDamage.DamageDict[key] = FixedPoint2.New(newValue);
+                if (newValueFlat != 0 || newValuePercentile != 0)
+                    newDamage.DamageDict[key] = FixedPoint2.New(Math.Min(newValueFlat, newValuePercentile));
             }
+            //KS14 END
 
             return newDamage;
         }
@@ -355,22 +447,28 @@ namespace Content.Shared.Damage
         #region Operators
         public static DamageSpecifier operator *(DamageSpecifier damageSpec, FixedPoint2 factor)
         {
-            DamageSpecifier newDamage = new();
-            foreach (var entry in damageSpec.DamageDict)
+            //KS14 start
+            DamageSpecifier newDamage = new(damageSpec);
+            var keys = new List<string>(newDamage.DamageDict.Keys);
+            foreach (var key in keys)
             {
-                newDamage.DamageDict.Add(entry.Key, entry.Value * factor);
+                newDamage.DamageDict[key] = newDamage.DamageDict[key] * factor;
             }
             return newDamage;
+            //KS14 end
         }
 
         public static DamageSpecifier operator *(DamageSpecifier damageSpec, float factor)
         {
-            DamageSpecifier newDamage = new();
-            foreach (var entry in damageSpec.DamageDict)
+            //KS14 start
+            DamageSpecifier newDamage = new(damageSpec);
+            var keys = new List<string>(newDamage.DamageDict.Keys);
+            foreach (var key in keys)
             {
-                newDamage.DamageDict.Add(entry.Key, entry.Value * factor);
+                newDamage.DamageDict[key] = newDamage.DamageDict[key] * factor;
             }
             return newDamage;
+            //KS14 end
         }
 
         public static DamageSpecifier operator /(DamageSpecifier damageSpec, FixedPoint2 factor)
@@ -385,13 +483,15 @@ namespace Content.Shared.Damage
 
         public static DamageSpecifier operator /(DamageSpecifier damageSpec, float factor)
         {
-            DamageSpecifier newDamage = new();
-
-            foreach (var entry in damageSpec.DamageDict)
+            //KS14 start
+            DamageSpecifier newDamage = new(damageSpec);
+            var keys = new List<string>(newDamage.DamageDict.Keys);
+            foreach (var key in keys)
             {
-                newDamage.DamageDict.Add(entry.Key, entry.Value / factor);
+                newDamage.DamageDict[key] = newDamage.DamageDict[key] / factor;
             }
             return newDamage;
+            //KS14 end
         }
 
         public static DamageSpecifier operator +(DamageSpecifier damageSpecA, DamageSpecifier damageSpecB)

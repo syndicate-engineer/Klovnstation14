@@ -1,3 +1,12 @@
+// SPDX-FileCopyrightText: 2023 Slava0135
+// SPDX-FileCopyrightText: 2024 KrasnoshchekovPavel
+// SPDX-FileCopyrightText: 2024 Preston Smith
+// SPDX-FileCopyrightText: 2024 beck-thompson
+// SPDX-FileCopyrightText: 2026 github_actions[bot]
+// SPDX-FileCopyrightText: 2026 nabegator220
+//
+// SPDX-License-Identifier: MPL-2.0
+
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Prototypes;
@@ -78,6 +87,37 @@ public sealed class DamageExamineSystem : EntitySystem
                 msg.AddMarkupOrThrow(Loc.GetString("damage-value", ("type", _prototype.Index<DamageTypePrototype>(damage.Key).LocalizedName), ("amount", damage.Value)));
             }
         }
+
+        // KS14 START
+        // Show percentile penetration per damage type if present (KS14)
+        if (damageSpecifier.PercentilePenetration is { } percentPen && percentPen.Count > 0)
+        {
+            foreach (var (key, val) in percentPen)
+            {
+                var typeName = _prototype.Index<DamageTypePrototype>(key).LocalizedName;
+                var perc = val * 100f;
+                var ap = (int)Math.Round(perc);
+                var abs = Math.Abs(ap);
+                var arg = abs == 0 ? 0 : ap / abs; // yields 1 for positive, -1 for negative
+                msg.PushNewline();
+                msg.AddMarkupOrThrow(Loc.GetString("armor-penetration-percentile", ("type", typeName), ("arg", arg), ("abs", abs)));
+            }
+        }
+
+        // Show flat penetration per damage type if present (KS14)
+        if (damageSpecifier.FlatPenetration is { } flatPen && flatPen.Count > 0)
+        {
+            foreach (var (key, val) in flatPen)
+            {
+                var typeName = _prototype.Index<DamageTypePrototype>(key).LocalizedName;
+                var ap = (int)Math.Round(val);
+                var abs = Math.Abs(ap);
+                var arg = abs == 0 ? 0 : ap / abs; // yields 1 for positive, -1 for negative
+                msg.PushNewline();
+                msg.AddMarkupOrThrow(Loc.GetString("armor-penetration-flat", ("type", typeName), ("arg", arg), ("abs", abs)));
+            }
+        }
+        // KS14 END
 
         return msg;
     }
