@@ -679,3 +679,11 @@ Entries:
       message: Maxcaps can now be properly huge.
   id: 86
   time: '2026-02-02T16:16:30.0000000+00:00'
+- author: nabegator220
+  changes:
+    - type: Tweak
+      message: >-
+        Armor penetration has been expanded. So far, this has no effect on the
+        game.
+  id: 87
+  time: '2026-02-02T18:18:48.0000000+00:00'
