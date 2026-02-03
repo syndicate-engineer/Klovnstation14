@@ -687,3 +687,9 @@ Entries:
         game.
   id: 87
   time: '2026-02-02T18:18:48.0000000+00:00'
+- author: nabegator220
+  changes:
+    - type: Tweak
+      message: We are using the new logo now.
+  id: 88
+  time: '2026-02-03T22:01:49.0000000+00:00'
