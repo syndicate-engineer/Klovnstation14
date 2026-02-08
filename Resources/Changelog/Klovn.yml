@@ -693,3 +693,9 @@ Entries:
       message: We are using the new logo now.
   id: 88
   time: '2026-02-03T22:01:49.0000000+00:00'
+- author: nabegator220
+  changes:
+    - type: Add
+      message: Added secborgs.
+  id: 89
+  time: '2026-02-08T14:54:50.0000000+00:00'
